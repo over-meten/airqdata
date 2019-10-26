@@ -298,6 +298,12 @@ def evaluate_near_sensors(start_date, end_date, lat=50.848, lon=4.351,
     hourly_means_pieces = []
     column_keys = []
     for sensor in sensors:
+
+        # avoiding manual input in get_measurements
+        # metadata not downloaded for some reason?
+        if self.sensor_type is None:
+            self.sensor_type = sensor_type
+
         sensor.get_measurements(start_date, end_date, **retrieval_kwargs)
         try:
             sensor_hourly_means = sensor.get_hourly_means()
