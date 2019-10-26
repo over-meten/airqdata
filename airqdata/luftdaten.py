@@ -197,7 +197,7 @@ class Sensor(utils.BaseSensor):
         """
 
         # Remove values indicating errors
-        self.measurements.replace([999.9, 1999.9], pd.np.nan, inplace=True)
+        self.measurements.replace([999.9, 1999.9, 'unavailable'], pd.np.nan, inplace=True)
 
         # Identify middle items in sequences of at least 5 dead measurements
         dead_5_middle = self.measurements.rolling(5, center=True).max() < 1.0
