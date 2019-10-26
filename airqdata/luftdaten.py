@@ -301,8 +301,8 @@ def evaluate_near_sensors(start_date, end_date, lat=50.848, lon=4.351,
 
         # avoiding manual input in get_measurements
         # metadata not downloaded for some reason?
-        if self.sensor_type is None:
-            self.sensor_type = sensor_type
+        if sensor.sensor_type is None:
+            sensor.sensor_type = sensor_type
 
         sensor.get_measurements(start_date, end_date, **retrieval_kwargs)
         try:
